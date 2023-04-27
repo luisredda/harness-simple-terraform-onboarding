@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "harness" {
-  api_key    = var.api_key
+  platform_api_key = var.api_key
   account_id = var.account_id
 }
 
