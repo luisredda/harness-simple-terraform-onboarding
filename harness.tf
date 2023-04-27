@@ -29,7 +29,7 @@ resource "harness_platform_service" "my_service" {
   yaml = <<-EOT
     service:
       name: ${var.service_name}
-      identifier: ${var.identifier}
+      identifier: ${var.service_identifier}
       serviceDefinition:
         spec:
           manifests:
