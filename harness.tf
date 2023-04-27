@@ -69,8 +69,8 @@ resource "harness_platform_service" "my_service" {
 }
 
 resource "harness_platform_environment" "example" {
-  identifier = var.envid
-  name       = var.envname
+  identifier = var.environment_id
+  name       = var.environment_name
   org_id     = var.org_id
   project_id = harness_platform_project.my_project.id
   tags       = ["foo:bar", "baz"]
@@ -82,8 +82,8 @@ resource "harness_platform_environment" "example" {
 
   yaml = <<-EOT
                environment:
-         name: name
-         identifier: identifier
+         name: ${var.environment_name}
+         identifier: ${var.environment_id}
          orgIdentifier: ${var.org_id}
          projectIdentifier: ${harness_platform_project.my_project.id}
          type: PreProduction
