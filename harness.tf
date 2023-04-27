@@ -20,6 +20,7 @@ resource "harness_platform_project" "my_project" {
 }
 
 resource "harness_platform_service" "my_service" {
+  depends_on = [harness_platform_project.my_project]
   identifier  = var.service_identifier
   name        = var.service_name
   description = var.service_description
@@ -69,6 +70,7 @@ resource "harness_platform_service" "my_service" {
 }
 
 resource "harness_platform_environment" "example" {
+  depends_on = [harness_platform_service.my_service]
   identifier = var.environment_id
   name       = var.environment_name
   org_id     = var.org_id
@@ -128,6 +130,7 @@ resource "harness_platform_environment" "example" {
 }
 
 resource "harness_platform_infrastructure" "example" {
+  depends_on = [harness_platform_environment.example]
   identifier      = var.infra_id
   name            = var.infra_name
   org_id          = var.org_id
