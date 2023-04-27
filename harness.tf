@@ -69,8 +69,8 @@ resource "harness_platform_service" "my_service" {
 }
 
 resource "harness_platform_environment" "example" {
-  identifier = var.serviceid
-  name       = var.servicename
+  identifier = var.envid
+  name       = var.envname
   org_id     = var.org_id
   project_id = harness_platform_project.my_project.id
   tags       = ["foo:bar", "baz"]
