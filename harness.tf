@@ -72,7 +72,7 @@ resource "harness_platform_environment" "example" {
   identifier = var.environment_id
   name       = var.environment_name
   org_id     = var.org_id
-  project_id = harness_platform_project.my_project.id
+  project_id = var.project_identifier
   tags       = ["foo:bar", "baz"]
   type       = "PreProduction"
 
@@ -81,7 +81,7 @@ resource "harness_platform_environment" "example" {
   ## Not Mandatory for Environment Creation nor Pipeline Usage
 
   yaml = <<-EOT
-               environment:
+       environment:
          name: ${var.environment_name}
          identifier: ${var.environment_id}
          orgIdentifier: ${var.org_id}
