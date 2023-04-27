@@ -33,3 +33,11 @@ variable "service_name" {
 variable "service_description" {
   description = "Description for the Harness service"
 }
+
+variable "environment_id" {
+  description = "ID for the Harness Environment"
+}
+
+variable "environment_name" {
+  description = "Name for the Harness Environment"
+}
