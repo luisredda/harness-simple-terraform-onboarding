@@ -126,3 +126,31 @@ resource "harness_platform_environment" "example" {
                        secretFiles: []
       EOT
 }
+
+resource "harness_platform_infrastructure" "example" {
+  identifier      = var.infra_id
+  name            = var.infra_name
+  org_id          = var.org_id
+  project_id      = var.project_identifier
+  env_id          = var.environment_id
+  type            = "KubernetesDirect"
+  deployment_type = "Kubernetes"
+  yaml            = <<-EOT
+        infrastructureDefinition:
+         name: name
+         identifier: identifier
+         description: ""
+         tags:
+           asda: ""
+         orgIdentifier: ${var.org_id}
+         projectIdentifier: ${var.project_identifier}
+         environmentRef: ${var.environment_id}
+         deploymentType: Kubernetes
+         type: KubernetesDirect
+         spec:
+          connectorRef: account.default
+          namespace: asdasdsa
+          releaseName: release-<+INFRA_KEY>
+          allowSimultaneousDeployments: false
+      EOT
+}
