@@ -1,3 +1,12 @@
+terraform {
+  required_providers {
+    harness = {
+      source = "harness/harness"
+      version = "0.19.0"
+    }
+  }
+}
+
 provider "harness" {
   api_key    = var.api_key
   account_id = var.account_id
