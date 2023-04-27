@@ -41,3 +41,12 @@ variable "environment_id" {
 variable "environment_name" {
   description = "Name for the Harness Environment"
 }
+
+variable "infra_id" {
+  description = "ID for the Harness Infrastructure Definition"
+}
+
+variable "infra_name" {
+  description = "Name for the Harness Infrastructure"
+}
+
