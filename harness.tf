@@ -137,8 +137,8 @@ resource "harness_platform_infrastructure" "example" {
   deployment_type = "Kubernetes"
   yaml            = <<-EOT
         infrastructureDefinition:
-         name: name
-         identifier: identifier
+         name: ${var.infra_name}
+         identifier: ${var.infra_id}
          description: ""
          tags:
            asda: ""
