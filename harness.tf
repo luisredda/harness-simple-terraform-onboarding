@@ -174,3 +174,208 @@ output "serversdkkey" {
   value     = harness_platform_ff_api_key.testserverapikey.api_key
   sensitive = true
 }
+
+// FF Enable CE Module
+resource "harness_platform_feature_flag" "Enable_CE_Module" {
+  depends_on = [harness_platform_service.my_service]
+  org_id          = var.org_id
+  project_id      = var.project_identifier
+
+  kind       = "boolean"
+  name       = "Enable CE Module"
+  identifier = "Enable_CE_Module"
+  permanent  = false
+
+  default_on_variation  = "Enabled"
+  default_off_variation = "Disabled"
+
+  variation {
+    identifier  = "Enabled"
+    name        = "Enabled"
+    description = "The feature is enabled"
+    value       = "true"
+  }
+
+  variation {
+    identifier  = "Disabled"
+    name        = "Disabled"
+    description = "The feature is disabled"
+    value       = "false"
+  }
+}
+
+// FF Enable STO Module
+resource "harness_platform_feature_flag" "Enable_STO_Module" {
+  depends_on = [harness_platform_service.my_service]
+  org_id          = var.org_id
+  project_id      = var.project_identifier
+
+  kind       = "boolean"
+  name       = "Enable STO Module"
+  identifier = "Enable_STO_Module"
+  permanent  = false
+
+  default_on_variation  = "Enabled"
+  default_off_variation = "Disabled"
+
+  variation {
+    identifier  = "Enabled"
+    name        = "Enabled"
+    description = "The feature is enabled"
+    value       = "true"
+  }
+
+  variation {
+    identifier  = "Disabled"
+    name        = "Disabled"
+    description = "The feature is disabled"
+    value       = "false"
+  }
+}
+
+// FF Enable CCM Module
+resource "harness_platform_feature_flag" "Enable_CCM_Module" {
+  depends_on = [harness_platform_service.my_service]
+  org_id          = var.org_id
+  project_id      = var.project_identifier
+
+  kind       = "boolean"
+  name       = "Enable CCM Module"
+  identifier = "Enable_CCM_Module"
+  permanent  = false
+
+  default_on_variation  = "Enabled"
+  default_off_variation = "Disabled"
+
+  variation {
+    identifier  = "Enabled"
+    name        = "Enabled"
+    description = "The feature is enabled"
+    value       = "true"
+  }
+
+  variation {
+    identifier  = "Disabled"
+    name        = "Disabled"
+    description = "The feature is disabled"
+    value       = "false"
+  }
+}
+
+
+// FF Enable SRM Module
+resource "harness_platform_feature_flag" "Enable_SRM_Module" {
+  depends_on = [harness_platform_service.my_service]
+  org_id          = var.org_id
+  project_id      = var.project_identifier
+
+  kind       = "boolean"
+  name       = "Enable SRM Module"
+  identifier = "Enable_SRM_Module"
+  permanent  = false
+
+  default_on_variation  = "Enabled"
+  default_off_variation = "Disabled"
+
+  variation {
+    identifier  = "Enabled"
+    name        = "Enabled"
+    description = "The feature is enabled"
+    value       = "true"
+  }
+
+  variation {
+    identifier  = "Disabled"
+    name        = "Disabled"
+    description = "The feature is disabled"
+    value       = "false"
+  }
+}
+
+
+// FF Enable FF Module
+resource "harness_platform_feature_flag" "Enable_FF_Module" {
+  depends_on = [harness_platform_service.my_service]
+  org_id          = var.org_id
+  project_id      = var.project_identifier
+
+  kind       = "boolean"
+  name       = "Enable FF Module"
+  identifier = "Enable_FF_Module"
+  permanent  = false
+
+  default_on_variation  = "Enabled"
+  default_off_variation = "Disabled"
+
+  variation {
+    identifier  = "Enabled"
+    name        = "Enabled"
+    description = "The feature is enabled"
+    value       = "true"
+  }
+
+  variation {
+    identifier  = "Disabled"
+    name        = "Disabled"
+    description = "The feature is disabled"
+    value       = "false"
+  }
+}
+
+// FF Enable CD Module
+resource "harness_platform_feature_flag" "Enable_CD_Module" {
+  depends_on = [harness_platform_service.my_service]
+  org_id          = var.org_id
+  project_id      = var.project_identifier
+
+  kind       = "boolean"
+  name       = "Enable CD Module"
+  identifier = "Enable_CD_Module"
+  permanent  = false
+
+  default_on_variation  = "Enabled"
+  default_off_variation = "Disabled"
+
+  variation {
+    identifier  = "Enabled"
+    name        = "Enabled"
+    description = "The feature is enabled"
+    value       = "true"
+  }
+
+  variation {
+    identifier  = "Disabled"
+    name        = "Disabled"
+    description = "The feature is disabled"
+    value       = "false"
+  }
+}
+
+// FF Enable CI Module
+resource "harness_platform_feature_flag" "Enable_CI_Module" {
+  depends_on = [harness_platform_service.my_service]
+  org_id          = var.org_id
+  project_id      = var.project_identifier
+
+  kind       = "boolean"
+  name       = "Enable CI Module"
+  identifier = "Enable_CI_Module"
+  permanent  = false
+
+  default_on_variation  = "Enabled"
+  default_off_variation = "Disabled"
+
+  variation {
+    identifier  = "Enabled"
+    name        = "Enabled"
+    description = "The feature is enabled"
+    value       = "true"
+  }
+
+  variation {
+    identifier  = "Disabled"
+    name        = "Disabled"
+    description = "The feature is disabled"
+    value       = "false"
+  }
+}
