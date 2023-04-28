@@ -157,3 +157,19 @@ resource "harness_platform_infrastructure" "example" {
           allowSimultaneousDeployments: false
       EOT
 }
+
+resource "harness_platform_ff_api_key" "testserverapikey" {
+  identifier  = "testserver"
+  name        = "TestServer"
+  description = "this is a server SDK key"
+  org_id      = var.org_id
+  project_id  = var.project_identifier
+  env_id      = var.environment_id
+  expired_at  = 1713729225
+  type        = "Server"
+}
+
+output "serversdkkey" {
+  value     = harness_platform_ff_api_key.testserverapikey.api_key
+  sensitive = true
+}
