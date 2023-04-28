@@ -176,7 +176,7 @@ output "serversdkkey" {
 }
 
 // FF Enable CE Module
-resource "harness_platform_feature_flag" "Enable_CE_Module" {
+resource "harness_platform_feature_flag" "enable_ce_module" {
   depends_on = [harness_platform_service.my_service]
   org_id          = var.org_id
   project_id      = var.project_identifier
@@ -205,7 +205,7 @@ resource "harness_platform_feature_flag" "Enable_CE_Module" {
 }
 
 // FF Enable STO Module
-resource "harness_platform_feature_flag" "Enable_STO_Module" {
+resource "harness_platform_feature_flag" "enable_sto_module" {
   depends_on = [harness_platform_service.my_service]
   org_id          = var.org_id
   project_id      = var.project_identifier
@@ -234,7 +234,7 @@ resource "harness_platform_feature_flag" "Enable_STO_Module" {
 }
 
 // FF Enable CCM Module
-resource "harness_platform_feature_flag" "Enable_CCM_Module" {
+resource "harness_platform_feature_flag" "enable_ccm_module" {
   depends_on = [harness_platform_service.my_service]
   org_id          = var.org_id
   project_id      = var.project_identifier
@@ -264,7 +264,7 @@ resource "harness_platform_feature_flag" "Enable_CCM_Module" {
 
 
 // FF Enable SRM Module
-resource "harness_platform_feature_flag" "Enable_SRM_Module" {
+resource "harness_platform_feature_flag" "enable_srm_module" {
   depends_on = [harness_platform_service.my_service]
   org_id          = var.org_id
   project_id      = var.project_identifier
@@ -294,7 +294,7 @@ resource "harness_platform_feature_flag" "Enable_SRM_Module" {
 
 
 // FF Enable FF Module
-resource "harness_platform_feature_flag" "Enable_FF_Module" {
+resource "harness_platform_feature_flag" "enable_ff_module" {
   depends_on = [harness_platform_service.my_service]
   org_id          = var.org_id
   project_id      = var.project_identifier
@@ -323,7 +323,7 @@ resource "harness_platform_feature_flag" "Enable_FF_Module" {
 }
 
 // FF Enable CD Module
-resource "harness_platform_feature_flag" "Enable_CD_Module" {
+resource "harness_platform_feature_flag" "enable_cd_module" {
   depends_on = [harness_platform_service.my_service]
   org_id          = var.org_id
   project_id      = var.project_identifier
@@ -352,7 +352,7 @@ resource "harness_platform_feature_flag" "Enable_CD_Module" {
 }
 
 // FF Enable CI Module
-resource "harness_platform_feature_flag" "Enable_CI_Module" {
+resource "harness_platform_feature_flag" "enablecimodule" {
   depends_on = [harness_platform_service.my_service]
   org_id          = var.org_id
   project_id      = var.project_identifier
