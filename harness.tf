@@ -166,8 +166,8 @@ resource "harness_platform_ff_api_key" "testserverapikey" {
   org_id      = var.org_id
   project_id  = var.project_identifier
   env_id      = var.environment_id
-  expired_at  = 1713729225
-  type        = "Server"
+  expired_at  = 1714273200000
+  type        = "Client"
 }
 
 output "serversdkkey" {
