@@ -160,8 +160,8 @@ resource "harness_platform_infrastructure" "example" {
 
 resource "harness_platform_ff_api_key" "testserverapikey" {
   depends_on = [harness_platform_environment.example]
-  identifier  = "testserver"
-  name        = "TestServer"
+  identifier  = "frontendapikey"
+  name        = "FrontEndKey"
   description = "this is a server SDK key"
   org_id      = var.org_id
   project_id  = var.project_identifier
@@ -176,7 +176,7 @@ output "serversdkkey" {
 }
 
 resource "harness_platform_feature_flag" "enable_ce_module" {
-  depends_on = [harness_platform_project.my_project]
+  depends_on = [harness_platform_ff_api_key.testserverapikey]
   org_id          = var.org_id
   project_id      = var.project_identifier
 
@@ -204,7 +204,7 @@ resource "harness_platform_feature_flag" "enable_ce_module" {
 }
 
 resource "harness_platform_feature_flag" "enable_sto_module" {
-  depends_on = [harness_platform_project.my_project]
+  depends_on = [harness_platform_feature_flag.enable_ce_module]
   org_id          = var.org_id
   project_id      = var.project_identifier
 
@@ -232,7 +232,7 @@ resource "harness_platform_feature_flag" "enable_sto_module" {
 }
 
 resource "harness_platform_feature_flag" "enable_ccm_module" {
-  depends_on = [harness_platform_project.my_project]
+  depends_on = [harness_platform_feature_flag.enable_sto_module]
   org_id          = var.org_id
   project_id      = var.project_identifier
 
@@ -260,7 +260,7 @@ resource "harness_platform_feature_flag" "enable_ccm_module" {
 }
 
 resource "harness_platform_feature_flag" "enable_srm_module" {
-  depends_on = [harness_platform_project.my_project]
+  depends_on = [harness_platform_feature_flag.enable_ccm_module]
   org_id          = var.org_id
   project_id      = var.project_identifier
 
@@ -289,7 +289,7 @@ resource "harness_platform_feature_flag" "enable_srm_module" {
 
 
 resource "harness_platform_feature_flag" "enable_ff_module" {
-  depends_on = [harness_platform_project.my_project]
+  depends_on = [harness_platform_feature_flag.enable_srm_module]
   org_id          = var.org_id
   project_id      = var.project_identifier
 
@@ -317,7 +317,7 @@ resource "harness_platform_feature_flag" "enable_ff_module" {
 }
 
 resource "harness_platform_feature_flag" "enable_cd_module" {
-  depends_on = [harness_platform_project.my_project]
+  depends_on = [harness_platform_feature_flag.enable_ff_module]
   org_id          = var.org_id
   project_id      = var.project_identifier
 
@@ -345,7 +345,7 @@ resource "harness_platform_feature_flag" "enable_cd_module" {
 }
 
 resource "harness_platform_feature_flag" "enablecimodule" {
-  depends_on = [harness_platform_project.my_project]
+  depends_on = [harness_platform_feature_flag.enable_cd_module]
   org_id          = var.org_id
   project_id      = var.project_identifier
 
