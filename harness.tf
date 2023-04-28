@@ -262,7 +262,6 @@ resource "harness_platform_feature_flag" "enable_ccm_module" {
   }
 }
 
-
 // FF Enable SRM Module
 resource "harness_platform_feature_flag" "enable_srm_module" {
   depends_on = [harness_platform_service.my_service]
