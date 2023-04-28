@@ -160,8 +160,8 @@ resource "harness_platform_infrastructure" "example" {
 
 resource "harness_platform_ff_api_key" "testserverapikey" {
   depends_on = [harness_platform_environment.example]
-  identifier  = "testserverapikey"
-  name        = "testserverapikey"
+  identifier  = "testserver"
+  name        = "TestServer"
   description = "this is a server SDK key"
   org_id      = var.org_id
   project_id  = var.project_identifier
