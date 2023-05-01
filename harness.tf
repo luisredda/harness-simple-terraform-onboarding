@@ -57,6 +57,16 @@ resource "harness_platform_service" "my_service" {
             - name: var2
               type: String
               value: val2
+          artifacts:
+            primary:
+              primaryArtifactRef: <+input>
+              sources:
+                - spec:
+                    connectorRef: account.LRDockerHub
+                    imagePath: luisredda/harness-java-demo-k8s
+                    tag: latest
+                  identifier: Dockerhub
+                  type: DockerRegistry         
         type: Kubernetes
       gitOpsEnabled: false
   EOT
