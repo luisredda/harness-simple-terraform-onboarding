@@ -1,1 +1,1 @@
-# harness-simple-terraform-onboarding
+# Fast and simple application onboarding with Harness Terraform Provider
