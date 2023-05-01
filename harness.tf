@@ -59,7 +59,7 @@ resource "harness_platform_service" "my_service" {
               value: val2
           artifacts:
             primary:
-              primaryArtifactRef: <+input>
+              primaryArtifactRef: Dockerhub
               sources:
                 - spec:
                     connectorRef: account.LRDockerHub
