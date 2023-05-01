@@ -339,3 +339,47 @@ resource "harness_platform_feature_flag" "enablecimodule" {
     value       = "false"
   }
 }
+
+resource "harness_platform_pipeline" "example" {
+  depends_on = [harness_platform_feature_flag.enablecimodule]
+  identifier = "identifier"
+  org_id     =  var.org_id
+  project_id =  var.project_identifier
+  name       = "Java Build and Deploy"
+  yaml = <<-EOT
+    pipeline:
+      name: Build and Deploy Java App
+      identifier: Build_and_Deploy_Java_App
+      template:
+        templateRef: account.Java_Pipeline
+        versionLabel: v1
+        templateInputs:
+          properties:
+            ci:
+              codebase:
+                build: <+input>
+                repoName: luisredda/harness-onboarding-demo
+          stages:
+            - stage:
+                identifier: Build_App
+                type: CI
+                variables:
+                  - name: ff_key
+                    type: String
+                    value: ${harness_platform_ff_api_key.testserverapikey.api_key}
+            - stage:
+                identifier: K8s_Deployment
+                type: Deployment
+                spec:
+                  service:
+                    serviceRef: javaapp
+                  environment:
+                    environmentRef: dev
+                    infrastructureDefinitions:
+                      - identifier: k8sdev
+      tags: {}
+      projectIdentifier: tf14
+      orgIdentifier: onboarding_org
+
+  EOT
+}
