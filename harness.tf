@@ -36,28 +36,20 @@ resource "harness_platform_service" "my_service" {
         spec:
           manifests:
             - manifest:
-                identifier: manifest1
+                identifier: Manifests
                 type: K8sManifest
-                spec:
-                  store:
-                    type: Github
-                    spec:
-                      connectorRef: <+input>
-                      gitFetchType: Branch
-                      paths:
-                        - files1
-                      repoName: <+input>
-                      branch: master
-                  skipResourceVersioning: false
-          configFiles:
-            - configFile:
-                identifier: configFile1
                 spec:
                   store:
                     type: Harness
                     spec:
                       files:
-                        - <+org.description>
+                        - account:/k8sManifests/namespace.yaml
+                        - account:/k8sManifests/deployment.yaml
+                        - account:/k8sManifests/service.yaml
+                  valuesPaths:
+                    - account:/k8sManifests/values.yaml
+                  skipResourceVersioning: false
+                  enableDeclarativeRollback: false
           variables:
             - name: var1
               type: String
@@ -87,12 +79,12 @@ resource "harness_platform_environment" "example" {
        environment:
          name: ${var.environment_name}
          identifier: ${var.environment_id}
+         tags:
+           type: autoprovisioned
+           terraform: "true"  
          orgIdentifier: ${var.org_id}
          projectIdentifier: ${harness_platform_project.my_project.id}
          type: PreProduction
-         tags:
-           foo: bar
-           baz: ""
          variables:
            - name: envVar1
              type: String
@@ -101,32 +93,7 @@ resource "harness_platform_environment" "example" {
            - name: envVar2
              type: String
              value: v2
-             description: ""
-         overrides:
-           manifests:
-             - manifest:
-                 identifier: manifestEnv
-                 type: Values
-                 spec:
-                   store:
-                     type: Git
-                     spec:
-                       connectorRef: <+input>
-                       gitFetchType: Branch
-                       paths:
-                         - file1
-                       repoName: <+input>
-                       branch: master
-           configFiles:
-             - configFile:
-                 identifier: configFileEnv
-                 spec:
-                   store:
-                     type: Harness
-                     spec:
-                       files:
-                         - account:/Add-ons/svcOverrideTest
-                       secretFiles: []
+             description: ""          
       EOT
 }
 
@@ -145,15 +112,15 @@ resource "harness_platform_infrastructure" "example" {
          identifier: ${var.infra_id}
          description: ""
          tags:
-           asda: ""
+           terraform: "true"
          orgIdentifier: ${var.org_id}
          projectIdentifier: ${var.project_identifier}
          environmentRef: ${var.environment_id}
          deploymentType: Kubernetes
          type: KubernetesDirect
          spec:
-          connectorRef: account.default
-          namespace: asdasdsa
+          connectorRef: account.cddemose
+          namespace: temp-${var.project_identifier}
           releaseName: release-<+INFRA_KEY>
           allowSimultaneousDeployments: false
       EOT
