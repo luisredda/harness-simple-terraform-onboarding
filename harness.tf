@@ -345,7 +345,7 @@ resource "harness_platform_pipeline" "example" {
   identifier = "Build_and_Deploy_Java_App"
   org_id     =  var.org_id
   project_id =  var.project_identifier
-  name       = "Java Build and Deploy"
+  name       = "Build and Deploy Java App"
   yaml = <<-EOT
     pipeline:
       name: Build and Deploy Java App
