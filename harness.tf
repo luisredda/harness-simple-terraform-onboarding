@@ -1,19 +1,17 @@
 terraform {
-   backend "s3" {
-   bucket = "lr-s3-backend"
-   key = "terraform.tfstate"
-   region = "us-east-2"
+  backend "s3" {
+    bucket = "lr-s3-backend"
+    key    = "terraform.tfstate"
+    region = "us-east-2"
   }
-}
-
+  
   required_providers {
     harness = {
-      source = "harness/harness"
+      source  = "harness/harness"
       version = "0.19.0"
     }
   }
-
-
+}
 
 provider "harness" {
   platform_api_key = var.api_key
