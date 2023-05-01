@@ -378,7 +378,7 @@ resource "harness_platform_pipeline" "example" {
                     infrastructureDefinitions:
                       - identifier: k8sdev
       tags: {}
-      projectIdentifier: tf14
+      projectIdentifier: ${var.project_identifier}
       orgIdentifier: ${var.org_id}
 
   EOT
