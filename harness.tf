@@ -7,12 +7,6 @@ terraform {
   }
 }
 
-terraform {
-   backend "s3" {
-   bucket = "lr-s3-backend"
-   key = "onboarding.tfstate"
-   region = "us-east-2"
-  }
 
 provider "harness" {
   platform_api_key = var.api_key
