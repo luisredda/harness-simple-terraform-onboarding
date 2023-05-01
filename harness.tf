@@ -393,3 +393,120 @@ resource "harness_platform_pipeline" "example" {
 
   EOT
 }
+
+resource "harness_platform_pipeline" "ffpipeline" {
+  depends_on = [harness_platform_pipeline.example]
+  identifier = "Configure_Feature_Flags"
+  org_id     =  var.org_id
+  project_id =  var.project_identifier
+  name       = "Configure Feature Flags"
+  yaml = <<-EOT
+    pipeline:
+      name: Configure Feature Flags
+      identifier: Configure_Feature_Flags
+      projectIdentifier: ${var.project_identifier}
+      orgIdentifier: ${var.org_id}
+      tags: {}
+      stages:
+        - stage:
+            name: Enable FF
+            identifier: Enable_FF
+            description: ""
+            type: FeatureFlag
+            spec:
+              execution:
+                steps:
+                  - step:
+                      type: FlagConfiguration
+                      name: CI Module ON
+                      identifier: CI_Module_ON
+                      spec:
+                        feature: Enable_CI_Module
+                        environment: dev
+                        instructions:
+                          - identifier: SetFeatureFlagStateIdentifier
+                            type: SetFeatureFlagState
+                            spec:
+                              state: "on"
+                      timeout: 10m
+                  - step:
+                      type: FlagConfiguration
+                      name: CD Module ON
+                      identifier: CD_Module_ON
+                      spec:
+                        feature: Enable_CD_Module
+                        environment: dev
+                        instructions:
+                          - identifier: SetFeatureFlagStateIdentifier
+                            type: SetFeatureFlagState
+                            spec:
+                              state: "on"
+                      timeout: 10m
+                  - step:
+                      type: FlagConfiguration
+                      name: FF Module ON
+                      identifier: FF_Module_ON
+                      spec:
+                        feature: Enable_FF_Module
+                        environment: dev
+                        instructions:
+                          - identifier: SetFeatureFlagStateIdentifier
+                            type: SetFeatureFlagState
+                            spec:
+                              state: "on"
+                      timeout: 10m
+                  - step:
+                      type: FlagConfiguration
+                      name: SRM Module ON
+                      identifier: SRM_Module_ON
+                      spec:
+                        feature: Enable_SRM_Module
+                        environment: dev
+                        instructions:
+                          - identifier: SetFeatureFlagStateIdentifier
+                            type: SetFeatureFlagState
+                            spec:
+                              state: "on"
+                      timeout: 10m
+                  - step:
+                      type: FlagConfiguration
+                      name: CCM Module ON
+                      identifier: CCM_Module_ON
+                      spec:
+                        feature: Enable_CCM_Module
+                        environment: dev
+                        instructions:
+                          - identifier: SetFeatureFlagStateIdentifier
+                            type: SetFeatureFlagState
+                            spec:
+                              state: "on"
+                      timeout: 10m
+                  - step:
+                      type: FlagConfiguration
+                      name: STO Module ON
+                      identifier: STO_Module_ON
+                      spec:
+                        feature: Enable_STO_Module
+                        environment: dev
+                        instructions:
+                          - identifier: SetFeatureFlagStateIdentifier
+                            type: SetFeatureFlagState
+                            spec:
+                              state: "on"
+                      timeout: 10m
+                  - step:
+                      type: FlagConfiguration
+                      name: CE Module ON
+                      identifier: CE_Module_ON
+                      spec:
+                        feature: Enable_CE_Module
+                        environment: dev
+                        instructions:
+                          - identifier: SetFeatureFlagStateIdentifier
+                            type: SetFeatureFlagState
+                            spec:
+                              state: "on"
+                      timeout: 10m
+
+  EOT
+}
