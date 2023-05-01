@@ -342,7 +342,7 @@ resource "harness_platform_feature_flag" "enablecimodule" {
 
 resource "harness_platform_pipeline" "example" {
   depends_on = [harness_platform_feature_flag.enablecimodule]
-  identifier = "identifier"
+  identifier = "Build_and_Deploy_Java_App"
   org_id     =  var.org_id
   project_id =  var.project_identifier
   name       = "Java Build and Deploy"
@@ -379,7 +379,7 @@ resource "harness_platform_pipeline" "example" {
                       - identifier: k8sdev
       tags: {}
       projectIdentifier: tf14
-      orgIdentifier: onboarding_org
+      orgIdentifier: ${var.org_id}
 
   EOT
 }
