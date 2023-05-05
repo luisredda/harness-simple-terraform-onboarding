@@ -32,6 +32,7 @@ resource "harness_platform_service" "my_service" {
   description = var.service_description
   org_id      = var.org_id
   project_id  = harness_platform_project.my_project.id
+  force_delete = true
     
   yaml = <<-EOT
     service:
