@@ -393,6 +393,15 @@ resource "harness_platform_pipeline" "example" {
                     environmentRef: dev
                     infrastructureDefinitions:
                       - identifier: k8sdev
+          parallel:
+            - stage:
+                spec:
+                  service:
+                    serviceRef: javaapp
+                  environment:
+                    environmentRef: dev
+                    infrastructureDefinitions:
+                      - identifier: k8sdev
       tags: {}
       projectIdentifier: ${var.project_identifier}
       orgIdentifier: ${var.org_id}
