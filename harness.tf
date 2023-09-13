@@ -86,6 +86,7 @@ resource "harness_platform_environment" "example" {
   project_id = var.project_identifier
   tags       = ["foo:bar", "baz"]
   type       = "PreProduction"
+  force_delete = true
 
   ## ENVIRONMENT V2 Update
   ## The YAML is needed if you want to define the Environment Variables and Overrides for the environment
