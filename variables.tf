@@ -50,3 +50,7 @@ variable "infra_name" {
   description = "Name for the Harness Infrastructure"
 }
 
+variable "tf_backend" {
+  description = "Terraform Backend File"
+  default = "terraform.tfstate"
+}
