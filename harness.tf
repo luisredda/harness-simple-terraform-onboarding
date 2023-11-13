@@ -140,7 +140,6 @@ resource "harness_platform_infrastructure" "example" {
 
 
 resource "harness_platform_pipeline" "example" {
-  depends_on = [harness_platform_feature_flag.enablecimodule]
   identifier = "Build_and_Deploy_Java_App"
   org_id     =  var.org_id
   project_id =  var.project_identifier
@@ -165,7 +164,7 @@ resource "harness_platform_pipeline" "example" {
                 variables:
                   - name: ff_key
                     type: String
-                    value: ${harness_platform_ff_api_key.testserverapikey.api_key}
+                    value: no-key
             - stage:
                 identifier: K8s_Deployment
                 type: Deployment
