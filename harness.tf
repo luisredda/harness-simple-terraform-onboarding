@@ -1,9 +1,4 @@
 terraform {
-  backend "s3" {
-    bucket = "lr-s3-backend"
-    key    = "terraform.tfstate"
-    region = "us-east-2"
-  }
   
   required_providers {
     harness = {
